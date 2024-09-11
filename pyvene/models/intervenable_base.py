@@ -412,8 +412,6 @@ class BaseModel(nn.Module):
         """Fail fast input validation"""
         if self.mode == "parallel" and unit_locations is not None:
             assert "sources->base" in unit_locations or "base" in unit_locations
-        elif activations_sources is None and unit_locations is not None and self.mode == "serial":
-            assert "sources->base" not in unit_locations
         
         # sources may contain None, but length should match
         if sources is not None and not (len(sources) == 1 and sources[0] == None):
